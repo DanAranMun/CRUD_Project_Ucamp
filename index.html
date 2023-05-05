@@ -19,9 +19,48 @@
         <!-- As a heading -->
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">Navbar</span>
+                <span class="navbar-brand mb-0 h1">CRUD Project</span>
             </div>
         </nav>
+        <div class="container">
+            <section>
+                <form>
+                    <div class="mb-3">
+                        <label for="InputEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="InputName">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </section>
+            <section>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>test@test.com</td>
+                            <td>Test</td>
+                            <td><button type="button" class="btn btn-primary">Edit</button>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                                        </tbody>
+                </table>
+            </section>
+        </div>
+
     </div>
 
 </body>
