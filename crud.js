@@ -23,9 +23,28 @@ function editContent(id) {
     const { name, email } = info[id] //Deconstruct JS//
     const emailInput = document.getElementById('InputEditemail');
     const nameInput = document.getElementById('InputEditname');
+    const itemId = document.getElementById('InputItemID')
     emailInput.value = email
     nameInput.value = name
-
+    itemId.value = id
+}
+/* Added edit function to existing information*/
+function saveEdit() {
+    const info = JSON.parse(localStorage.getItem("Info"))
+    const emailInput = document.getElementById('InputEditemail');
+    const nameInput = document.getElementById('InputEditname');
+    const itemId = document.getElementById('InputItemID')
+    info[itemId.value] = {name:nameInput.value, email:emailInput.value}
+    localStorage.setItem("Info", JSON.stringify(info))
+    closeModal()
+    printInfo()
+}
+/* To close the modal after saving any edit */
+function closeModal() {
+    const modal = document.getElementById('editModal');
+    const myModal = new bootstrap.Modal(modal);
+    console.log(myModal)
+    myModal.hide();
 }
 
 function printInfo() {

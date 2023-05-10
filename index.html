@@ -26,6 +26,7 @@
         </div>
         <div class="modal-body">
             <form>
+                <input type="hidden" id="InputItemID" />
                 <div class="mb-3">
                     <label for="InputEditemail" class="form-label">Edit email address</label>
                     <input type="email" class="form-control" id="InputEditemail" aria-describedby="emailHelp">
@@ -39,7 +40,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" onclick="saveEdit()">Save changes</button>
         </div>
       </div>
     </div>
