@@ -37,7 +37,7 @@ function saveEdit() {
     const emailInput = document.getElementById('InputEditemail');
     const nameInput = document.getElementById('InputEditname');
     const itemId = document.getElementById('InputItemID')
-    info[itemId.value] = {name:nameInput.value, email:emailInput.value}
+    info[itemId.value] = { name: nameInput.value, email: emailInput.value }
     localStorage.setItem("Info", JSON.stringify(info))
     myModal.hide();
     printInfo()
@@ -46,21 +46,23 @@ function saveEdit() {
 function printInfo() {
     const info = JSON.parse(localStorage.getItem("Info"))
     console.log(info)
+    const orderedInfo = info
+    console.log(orderedInfo, "Ordered Info")
     const box = document.getElementById('box')
     if (info) {
         box.innerHTML = "";
-
+        let content ="";
         info.forEach(function (item, index) {
-            let content = `<tr>
-            <th scope="row">${index}</th>
+            content += `<tr>
+            <th scope="row">${index+1}</th>
             <td>${item.email}</td>
             <td>${item.name}</td>
             <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editContent(${index})">Edit</button>
                 <button type="button" class="btn btn-danger" onclick="deleteStoredinfo(${index})">Delete</button>
             </td>
             </tr>`;
-            box.insertAdjacentHTML("afterbegin", content);
         });
+        box.innerHTML = content
 
     } else {
 
@@ -71,8 +73,8 @@ function printInfo() {
 
 function deleteStoredinfo(id) {
     const info = JSON.parse(localStorage.getItem("Info"))
-    const itemFiltered = info.filter((item,index) => index !== id ) 
-    console.log (itemFiltered, "Test for filter")
+    const itemFiltered = info.filter((item, index) => index !== id)
+    console.log(itemFiltered, "Test for filter")
     localStorage.setItem("Info", JSON.stringify(itemFiltered))
     printInfo()
 }
