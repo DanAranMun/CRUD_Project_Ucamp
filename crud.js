@@ -1,3 +1,6 @@
+var modal = document.getElementById('editModal');
+var myModal = new bootstrap.Modal(modal);
+
 function onSubmit(e) {
     e.preventDefault();
     const name = document.getElementById('InputName');
@@ -36,15 +39,8 @@ function saveEdit() {
     const itemId = document.getElementById('InputItemID')
     info[itemId.value] = {name:nameInput.value, email:emailInput.value}
     localStorage.setItem("Info", JSON.stringify(info))
-    closeModal()
-    printInfo()
-}
-/* To close the modal after saving any edit */
-function closeModal() {
-    const modal = document.getElementById('editModal');
-    const myModal = new bootstrap.Modal(modal);
-    console.log(myModal)
     myModal.hide();
+    printInfo()
 }
 
 function printInfo() {
@@ -60,7 +56,7 @@ function printInfo() {
             <td>${item.email}</td>
             <td>${item.name}</td>
             <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editContent(${index})">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-danger" onclick="deleteStoredinfo(${index})">Delete</button>
             </td>
             </tr>`;
             box.insertAdjacentHTML("afterbegin", content);
@@ -71,4 +67,12 @@ function printInfo() {
 
     }
 
+}
+
+function deleteStoredinfo(id) {
+    const info = JSON.parse(localStorage.getItem("Info"))
+    const itemFiltered = info.filter((item,index) => index !== id ) 
+    console.log (itemFiltered, "Test for filter")
+    localStorage.setItem("Info", JSON.stringify(itemFiltered))
+    printInfo()
 }
