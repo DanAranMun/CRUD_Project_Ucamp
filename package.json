@@ -1,0 +1,12 @@
+{
+  "name": "ucamp-crud",
+  "version": "1.0.0",
+  "description": "This is a basic CRUD (Create, Read, Update, Delete) project that allows you to create and edit entries and view them in a table.",
+  "main": "crud.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
